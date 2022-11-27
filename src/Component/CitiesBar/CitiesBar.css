@@ -1,0 +1,13 @@
+body {
+    direction: rtl;
+    text-align: right;
+  }
+  form {
+    margin-top: 2em;
+    /* border-bottom: 1px solid black; */
+    
+}
+.form-field {
+    padding: 0.5em 2em;
+  }
+  
