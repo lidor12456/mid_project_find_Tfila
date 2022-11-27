@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import style from "./SynagogeCard.css";
 
 function SynagogeCard(props) {
   let structureData;
@@ -12,16 +13,10 @@ function SynagogeCard(props) {
       ) : (
         props.synagoeDetails.data && (
           <div>
-            {(structureData = Object.entries(props.synagoeDetails.data[0]))}
-            {
-              (structureData = JSON.stringify(structureData).replace(
-                /[^a-zA-Z0-9]/g,
-                " "
-              ))
-            }
+            {/* {(structureData = Object.entries(props.synagoeDetails.data[0]))}
             {console.log(structureData)}
             {structureData.map((item, i) => {
-              // console.log(item);
+              console.log(item);
               if (i > 2) {
                 let objToString = JSON.stringify(item);
                 // console.log(objToString);
@@ -33,8 +28,104 @@ function SynagogeCard(props) {
               } else {
                 return <p>{item.join(" ")}</p>;
               }
+            })} */}
+            {props.synagoeDetails.data.map((item, i) => {
+              return (
+                // <p>SHACHARIT : {item.SHACHARIT.Sunday.join(" ")}</p>
+                <div>
+                  <h2>{item.name}</h2>
+                  <table className="tg">
+                    <thead>
+                      <tr>
+                        <th className="tg-0lax"></th>
+                        <th className="tg-0lax">sun</th>
+                        <th className="tg-0lax">mon</th>
+                        <th className="tg-0lax">thu</th>
+                        <th className="tg-0lax">wed</th>
+                        <th className="tg-0lax">thir</th>
+                        <th className="tg-0lax">fri</th>
+                        <th className="tg-0lax">sat</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="tg-0lax">shachrit</td>
+                        <td className="tg-0lax">
+                          {item.SHACHARIT.Sunday.join(" ")}
+                        </td>
+                        <td className="tg-0lax">
+                          {item.SHACHARIT.Monday.join(" ")}
+                        </td>
+                        <td className="tg-0lax">
+                          {item.SHACHARIT.Tuesday.join(" ")}
+                        </td>
+                        <td className="tg-0lax">
+                          {item.SHACHARIT.Wednesday.join(" ")}
+                        </td>
+                        <td className="tg-0lax">
+                          {item.SHACHARIT.Thursday.join(" ")}
+                        </td>
+                        <td className="tg-0lax">
+                          {item.SHACHARIT.Friday.join(" ")}
+                        </td>
+                        <td className="tg-0lax">
+                          {item.SHACHARIT.Saturday.join(" ")}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="tg-0lax">minha</td>
+                        <td className="tg-0lax">
+                          {item.MINHA.Sunday.join(" ")}
+                        </td>
+                        <td className="tg-0lax">
+                          {item.MINHA.Monday.join(" ")}
+                        </td>
+                        <td className="tg-0lax">
+                          {item.MINHA.Tuesday.join(" ")}
+                        </td>
+                        <td className="tg-0lax">
+                          {item.MINHA.Wednesday.join(" ")}
+                        </td>
+                        <td className="tg-0lax">
+                          {item.MINHA.Thursday.join(" ")}
+                        </td>
+                        <td className="tg-0lax">
+                          {item.MINHA.Friday.join(" ")}
+                        </td>
+                        <td className="tg-0lax">
+                          {item.MINHA.Saturday.join(" ")}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="tg-0lax">arvit</td>
+                        <td className="tg-0lax">
+                          {item.SHACHARIT.Sunday.join(" ")}
+                        </td>
+                        <td className="tg-0lax">
+                          {item.SHACHARIT.Monday.join(" ")}
+                        </td>
+                        <td className="tg-0lax">
+                          {item.SHACHARIT.Tuesday.join(" ")}
+                        </td>
+                        <td className="tg-0lax">
+                          {item.SHACHARIT.Wednesday.join(" ")}
+                        </td>
+                        <td className="tg-0lax">
+                          {item.SHACHARIT.Thursday.join(" ")}
+                        </td>
+                        <td className="tg-0lax">
+                          {item.SHACHARIT.Friday.join(" ")}
+                        </td>
+                        <td className="tg-0lax">
+                          {item.SHACHARIT.Saturday.join(" ")}
+                        </td>
+                      </tr>
+                    </tbody>
+                    <br></br>
+                  </table>
+                </div>
+              );
             })}
-            <p></p>
           </div>
         )
       )}

@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
-
+import SynagogeList from "../SynagogeList/SynagogeList";
 function CitiesBar() {
   // const [cityChosen, setCityChosen] = useState();
   const userInput = useRef();
@@ -27,9 +27,10 @@ function CitiesBar() {
   // input elements
   const cities_input = document.getElementById("city-choice");
   const streets_input = document.getElementById("street-choice");
-  let userChoice = "";
+  let userChoice = "initial";
 
   useEffect(() => {
+    //! edit/remove street parts
     /**
      * Get data from gov data API
      * Uses Axios just because it was easy
@@ -142,7 +143,7 @@ function CitiesBar() {
               e.preventDefault();
 
               userChoice = userInput.current.value;
-              console.log(userInput);
+              // console.log(userInput);
               console.log(userChoice);
             }}
           >
@@ -152,9 +153,11 @@ function CitiesBar() {
             <option value="">טוען רשימת ערים...</option>
           </datalist>
         </div>
+        <SynagogeList cityToFetch={userChoice} />
       </form>
     </div>
   );
 }
+//! fix this bug in props - SynagogeList doesnt get him after its update - only the initial value
 
 export default CitiesBar;
