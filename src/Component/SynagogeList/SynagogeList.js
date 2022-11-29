@@ -4,6 +4,7 @@ import SynagogeCard from "../SynagogeCard/SynagogeCard";
 
 function SynagogeList(props) {
   console.log(props);
+
   const { data, error, loading } = useFetch(
     "https://63737d12348e9472990dd266.mockapi.io/synagoges"
   );
@@ -17,7 +18,10 @@ function SynagogeList(props) {
     <div>
       {/* {data && console.log(data[0])} */}
       SynagogeList
-      <SynagogeCard synagoeDetails={{ data, error, loading }} />
+      <SynagogeCard
+        synagoeDetails={{ data, error, loading }}
+        cityToFetch={props.cityToFetch}
+      />
     </div>
   );
 }

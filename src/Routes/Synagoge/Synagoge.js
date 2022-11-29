@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useReducer } from "react";
-import { Routes, Route, Link, useParams } from "react-router-dom";
+import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
+import HomePage from "../HomePage/HomePage";
 import axios from "axios";
 
 function Synagoge() {
@@ -7,6 +8,7 @@ function Synagoge() {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMes, setErrorMes] = useState(null);
   const params = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,18 +32,13 @@ function Synagoge() {
 
   const handleDelete = async (id) => {
     try {
+      setIsLoading(true);
       const { data } = await axios.delete(
         `https://63737d12348e9472990dd266.mockapi.io/synagoges/${params.synagogeId}`
       );
       console.log(data);
-      // console.log(shoeArr);
 
-      // console.log(synagogeId);
-      // setSynagogeObj((prevState) =>
-      //   prevState.filter((task) => {
-      //     return task.synagogeId !== data.synagogeId;
-      //   })
-      // );
+      setIsLoading(true);
     } catch (e) {
       setErrorMes(e.message);
       setTimeout(() => {
@@ -50,52 +47,15 @@ function Synagoge() {
     }
   };
 
-  const handleAddSynagoge = async () => {
+  const handleUpdateSynagoge = async () => {
     try {
       setIsLoading(true);
       const { data } = await axios.put(
         `https://63737d12348e9472990dd266.mockapi.io/synagoges/${params.synagogeId}`,
         synagogeObj
-        // {
-        //   id: "0",
-        //   name: "my-synagoge",
-        //   adrees: "some-adress",
-        //   SHACHARIT: {
-        //     Sunday: ["6:00", "7:00"],
-        //     Monday: ["6:00", "7:00"],
-        //     Tuesday: ["6:00", "7:00"],
-        //     Wednesday: ["6:00", "7:00"],
-        //     Thursday: ["6:00", "7:00"],
-        //     Friday: ["6:00", "7:00", "8:00"],
-        //     Saturday: ["8:00"],
-        //   },
-        //   MINHA: {
-        //     Sunday: ["13:00", "16:30"],
-        //     Monday: ["13:00", "16:30"],
-        //     Tuesday: ["13:00", "16:30"],
-        //     Wednesday: ["13:00", "16:30"],
-        //     Thursday: ["13:00", "16:30"],
-        //     Friday: ["13:00", "Knisat Shabat"],
-        //     Saturday: ["13:00"],
-        //   },
-        //   ARVIT: {
-        //     Sunday: ["20:00"],
-        //     Monday: ["20:00"],
-        //     Tuesday: ["20:00"],
-        //     Wednesday: ["20:00"],
-        //     Thursday: ["20:00"],
-        //     Friday: ["Knisat Shabat"],
-        //     Saturday: ["Zeet Shabat"],
-        //   },
-        // }
       );
 
-      // MORDI const testData = axios.put("https://some.com", objectState);
-      // setTaskArr((prev) => [...prev, data]);
-      // setInputValBrand("");
-      // setInputValModel("");
-      // setInputImg("");
-      // setIsLoading(false);
+      setIsLoading(false);
     } catch (e) {
       setErrorMes(e.message);
     }
@@ -436,11 +396,19 @@ function Synagoge() {
           <button
             onClick={() => {
               handleDelete(synagogeObj.id);
+              navigate("/");
             }}
           >
             Delete
           </button>
-          <button onClick={handleAddSynagoge}>send</button>
+          <button
+            onClick={() => {
+              handleUpdateSynagoge();
+              navigate("/");
+            }}
+          >
+            Update
+          </button>
         </div>
       )}
     </div>
