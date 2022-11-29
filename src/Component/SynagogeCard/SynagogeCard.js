@@ -99,25 +99,25 @@ function SynagogeCard(props) {
                       <tr>
                         <td className="tg-0lax">arvit</td>
                         <td className="tg-0lax">
-                          {item.SHACHARIT.Sunday.join(" ")}
+                          {item.ARVIT.Sunday.join(" ")}
                         </td>
                         <td className="tg-0lax">
-                          {item.SHACHARIT.Monday.join(" ")}
+                          {item.ARVIT.Monday.join(" ")}
                         </td>
                         <td className="tg-0lax">
-                          {item.SHACHARIT.Tuesday.join(" ")}
+                          {item.ARVIT.Tuesday.join(" ")}
                         </td>
                         <td className="tg-0lax">
-                          {item.SHACHARIT.Wednesday.join(" ")}
+                          {item.ARVIT.Wednesday.join(" ")}
                         </td>
                         <td className="tg-0lax">
-                          {item.SHACHARIT.Thursday.join(" ")}
+                          {item.ARVIT.Thursday.join(" ")}
                         </td>
                         <td className="tg-0lax">
-                          {item.SHACHARIT.Friday.join(" ")}
+                          {item.ARVIT.Friday.join(" ")}
                         </td>
                         <td className="tg-0lax">
-                          {item.SHACHARIT.Saturday.join(" ")}
+                          {item.ARVIT.Saturday.join(" ")}
                         </td>
                       </tr>
                     </tbody>

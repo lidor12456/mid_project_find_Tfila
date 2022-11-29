@@ -16,29 +16,30 @@ function CitiesBar() {
   const api_url = "https://data.gov.il/api/3/action/datastore_search";
   // Cities endpoint
   const cities_resource_id = "5c78e9fa-c2e2-4771-93ff-7f400a12f7ba";
-  // Streets endpoint
-  const streets_resource_id = "a7296d1a-f8c9-4b70-96c2-6ebb4352f8e3";
+
   // Field names
   const city_name_key = "שם_ישוב";
-  const street_name_key = "שם_רחוב";
   // dataset ids
   const cities_data_id = "cities-data";
-  const streets_data_id = "streets-data";
   // input elements
   const cities_input = document.getElementById("city-choice");
-  const streets_input = document.getElementById("street-choice");
-  let userChoice = "initial";
-
+  // let userChoice;
+  const [userChoice, setUserChoice] = useState("");
   useEffect(() => {
     //! edit/remove street parts
     /**
      * Get data from gov data API
      * Uses Axios just because it was easy
      */
-    const getData = (resource_id, q = "", limit = "100") => {
+    const getData = (
+      resource_id,
+      q = "",
+      language = "english",
+      limit = "100"
+    ) => {
       console.log("sending", resource_id, q);
       return axios.get(api_url, {
-        params: { resource_id, q, limit },
+        params: { resource_id, q, language, limit },
         responseType: "json",
       });
     };
@@ -59,7 +60,14 @@ function CitiesBar() {
     /**
      * Fetch data, parse, and populate Datalist
      */
-    const populateDataList = (id, resource_id, field_name, query, limit) => {
+    const populateDataList = (
+      id,
+      resource_id,
+      field_name,
+      query,
+      language,
+      limit
+    ) => {
       const datalist_element = document.getElementById(id);
       console.log(datalist_element);
       if (!datalist_element) {
@@ -70,7 +78,7 @@ function CitiesBar() {
         );
         return;
       }
-      getData(resource_id, query, limit)
+      getData(resource_id, query, language, limit)
         .then((response) =>
           parseResponse(response?.data?.result?.records, field_name)
         )
@@ -92,58 +100,27 @@ function CitiesBar() {
       cities_resource_id,
       city_name_key,
       undefined,
+      "english",
       32000
     );
-    // userChoice = cities_input;
-    /**
-     * Populate streets
-     * Update the streets list on every city name change
-     * (assuming there aren't more than 32,000 streets in any city)
-     */
-    // cities_input.addEventListener("change", (event) => {
-    //   populateDataList(
-    //     streets_data_id,
-    //     streets_resource_id,
-    //     street_name_key,
-    //     {
-    //       שם_ישוב: cities_input.value,
-    //     },
-    //     32000
-    //   );
-    // });
   }, []);
   return (
     <div>
       <form action="">
         <div className="form-field" id="city-selection">
-          {/* <label
-            for="city-choice"
-            onChange={(event) => {
-              populateDataList(
-                streets_data_id,
-                streets_resource_id,
-                street_name_key,
-                {
-                  שם_ישוב: cities_input.value,
-                },
-                32000
-              );
-            }}
-          ></label> */}
           select city(type) &nbsp;
           <input
             list="cities-data"
             id="city-choice"
             name="city-choice"
             ref={userInput}
-            // value={cityChosen}
+            // value={userChoice}
           />
           <button
             onClick={(e) => {
               e.preventDefault();
-
-              userChoice = userInput.current.value;
-              // console.log(userInput);
+              // userChoice = userInput.current.value;
+              setUserChoice(userInput.current.value);
               console.log(userChoice);
             }}
           >
@@ -152,12 +129,13 @@ function CitiesBar() {
           <datalist id="cities-data">
             <option value="">טוען רשימת ערים...</option>
           </datalist>
+          {console.log(city_name_key)}
         </div>
-        <SynagogeList cityToFetch={userChoice} />
+        {/* <SynagogeList cityToFetch={userChoice} /> */}
+        {userChoice && <SynagogeList cityToFetch={userChoice} />}
       </form>
     </div>
   );
 }
-//! fix this bug in props - SynagogeList doesnt get him after its update - only the initial value
 
 export default CitiesBar;
