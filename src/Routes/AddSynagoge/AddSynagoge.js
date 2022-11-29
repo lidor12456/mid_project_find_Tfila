@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
+
+import styles from "./AddSynagoge.css";
 
 function AddSynagoge() {
+  const navigate = useNavigate();
+
   const [isLoading, setIsLoading] = useState(false);
   const [errorMes, setErrorMes] = useState(null);
   const [synagoeObj, setSynagogeObj] = useState({
@@ -438,7 +443,14 @@ function AddSynagoge() {
         </tbody>
         <br></br>
       </table>
-      <button onClick={handleAddSynagoge}>Add Synagoge</button>
+      <button
+        onClick={() => {
+          handleAddSynagoge();
+          navigate("/");
+        }}
+      >
+        Add Synagoge
+      </button>
     </div>
   );
 }

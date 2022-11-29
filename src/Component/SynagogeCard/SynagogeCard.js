@@ -7,7 +7,7 @@ function SynagogeCard(props) {
   let structureData;
 
   return (
-    <div>
+    <div className="content">
       {/* {console.log(props.synagoeDetails.data)} */}
       {props.synagoeDetails.loading && <div>Loading...</div>}
       {props.synagoeDetails.error ? (
@@ -15,6 +15,8 @@ function SynagogeCard(props) {
       ) : (
         props.synagoeDetails.data && (
           <div>
+            <h3>Synagogues and Tfila schedule for : {props.cityToFetch} </h3>
+
             {props.synagoeDetails.data.map((item, i) => {
               console.log(props.cityToFetch);
               return (

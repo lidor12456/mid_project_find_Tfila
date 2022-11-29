@@ -1,9 +1,12 @@
 .nav {
+  font-family:"Comic Sans MS", cursive, sans-serif;
+  background-color: none;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    padding: 1rem;
+    padding: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.38);
+    margin-bottom: 10px;
   }
   .nav__ul {
     display: flex;
@@ -12,10 +15,10 @@
   .nav__li {
     list-style: none;
     text-transform: capitalize;
-    background-color: rgba(5, 12, 12, 0.575);
+    background-color: rgba(9, 56, 56, 0.89);
     padding: 0.2rem 0.5rem;
     margin: auto 0.5rem;
-    border: 1px solid rgb(252, 252, 254);
+    border-right: 1px solid rgb(252, 252, 254);
     border-radius: 4px;
   }
   .nav__li a {
@@ -26,7 +29,3 @@
     background-color: rgba(58, 75, 98, 0.654);
     color: white;
   }
-.nav {
-    background-color: rgb(0, 0, 0);;
-
-}

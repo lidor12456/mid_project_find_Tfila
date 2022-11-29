@@ -16,8 +16,6 @@ function SynagogeList(props) {
 
   return (
     <div>
-      {/* {data && console.log(data[0])} */}
-      SynagogeList
       <SynagogeCard
         synagoeDetails={{ data, error, loading }}
         cityToFetch={props.cityToFetch}
