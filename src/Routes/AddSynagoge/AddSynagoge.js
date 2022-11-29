@@ -5,35 +5,36 @@ function AddSynagoge() {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMes, setErrorMes] = useState(null);
   const [synagoeObj, setSynagogeObj] = useState({
-    id: "0",
-    name: "my-synagoge",
-    adrees: "some-adress",
+    // id: new Date().getTime().toString(),
+    name: "",
+    city: "",
+    adrees: "",
     SHACHARIT: {
-      Sunday: ["6:00", "7:00"],
-      Monday: ["6:00", "7:00"],
-      Tuesday: ["6:00", "7:00"],
-      Wednesday: ["6:00", "7:00"],
-      Thursday: ["6:00", "7:00"],
-      Friday: ["6:00", "7:00", "8:00"],
-      Saturday: ["8:00"],
+      Sunday: [],
+      Monday: [],
+      Tuesday: [],
+      Wednesday: [],
+      Thursday: [],
+      Friday: [],
+      Saturday: [],
     },
     MINHA: {
-      Sunday: ["13:00", "16:30"],
-      Monday: ["13:00", "16:30"],
-      Tuesday: ["13:00", "16:30"],
-      Wednesday: ["13:00", "16:30"],
-      Thursday: ["13:00", "16:30"],
-      Friday: ["13:00", "Knisat Shabat"],
-      Saturday: ["13:00"],
+      Sunday: [],
+      Monday: [],
+      Tuesday: [],
+      Wednesday: [],
+      Thursday: [],
+      Friday: [],
+      Saturday: [],
     },
     ARVIT: {
-      Sunday: ["20:00"],
-      Monday: ["20:00"],
-      Tuesday: ["20:00"],
-      Wednesday: ["20:00"],
-      Thursday: ["20:00"],
-      Friday: ["Knisat Shabat"],
-      Saturday: ["Zeet Shabat"],
+      Sunday: [],
+      Monday: [],
+      Tuesday: [],
+      Wednesday: [],
+      Thursday: [],
+      Friday: [],
+      Saturday: [],
     },
   });
 
@@ -42,39 +43,42 @@ function AddSynagoge() {
       setIsLoading(true);
       const { data } = await axios.post(
         "https://63737d12348e9472990dd266.mockapi.io/synagoges",
-        {
-          id: "0",
-          name: "my-synagoge",
-          adrees: "some-adress",
-          SHACHARIT: {
-            Sunday: ["6:00", "7:00"],
-            Monday: ["6:00", "7:00"],
-            Tuesday: ["6:00", "7:00"],
-            Wednesday: ["6:00", "7:00"],
-            Thursday: ["6:00", "7:00"],
-            Friday: ["6:00", "7:00", "8:00"],
-            Saturday: ["8:00"],
-          },
-          MINHA: {
-            Sunday: ["13:00", "16:30"],
-            Monday: ["13:00", "16:30"],
-            Tuesday: ["13:00", "16:30"],
-            Wednesday: ["13:00", "16:30"],
-            Thursday: ["13:00", "16:30"],
-            Friday: ["13:00", "Knisat Shabat"],
-            Saturday: ["13:00"],
-          },
-          ARVIT: {
-            Sunday: ["20:00"],
-            Monday: ["20:00"],
-            Tuesday: ["20:00"],
-            Wednesday: ["20:00"],
-            Thursday: ["20:00"],
-            Friday: ["Knisat Shabat"],
-            Saturday: ["Zeet Shabat"],
-          },
-        }
+        synagoeObj
+        // {
+        //   id: "0",
+        //   name: "my-synagoge",
+        //   adrees: "some-adress",
+        //   SHACHARIT: {
+        //     Sunday: ["6:00", "7:00"],
+        //     Monday: ["6:00", "7:00"],
+        //     Tuesday: ["6:00", "7:00"],
+        //     Wednesday: ["6:00", "7:00"],
+        //     Thursday: ["6:00", "7:00"],
+        //     Friday: ["6:00", "7:00", "8:00"],
+        //     Saturday: ["8:00"],
+        //   },
+        //   MINHA: {
+        //     Sunday: ["13:00", "16:30"],
+        //     Monday: ["13:00", "16:30"],
+        //     Tuesday: ["13:00", "16:30"],
+        //     Wednesday: ["13:00", "16:30"],
+        //     Thursday: ["13:00", "16:30"],
+        //     Friday: ["13:00", "Knisat Shabat"],
+        //     Saturday: ["13:00"],
+        //   },
+        //   ARVIT: {
+        //     Sunday: ["20:00"],
+        //     Monday: ["20:00"],
+        //     Tuesday: ["20:00"],
+        //     Wednesday: ["20:00"],
+        //     Thursday: ["20:00"],
+        //     Friday: ["Knisat Shabat"],
+        //     Saturday: ["Zeet Shabat"],
+        //   },
+        // }
       );
+
+      // MORDI const testData = axios.put("https://some.com", objectState);
       // setTaskArr((prev) => [...prev, data]);
       // setInputValBrand("");
       // setInputValModel("");
@@ -87,6 +91,45 @@ function AddSynagoge() {
 
   return (
     <div>
+      <input
+        // value={inputValBrand}
+        placeholder="name"
+        onChange={({ target: { value } }) => {
+          setSynagogeObj((prev) => {
+            const updateState = { ...prev };
+
+            updateState.name = value;
+            return updateState;
+          });
+          console.log(synagoeObj);
+        }}
+      />
+      <input
+        // value={inputValBrand}
+        placeholder="city"
+        onChange={({ target: { value } }) => {
+          setSynagogeObj((prev) => {
+            const updateState = { ...prev };
+
+            updateState.city = value;
+            return updateState;
+          });
+          console.log(synagoeObj);
+        }}
+      />
+      <input
+        // value={inputValBrand}
+        placeholder="address"
+        onChange={({ target: { value } }) => {
+          setSynagogeObj((prev) => {
+            const updateState = { ...prev };
+
+            updateState.adrees = value;
+            return updateState;
+          });
+          console.log(synagoeObj);
+        }}
+      />
       <table className="tg">
         <thead>
           <tr>
@@ -431,6 +474,7 @@ function AddSynagoge() {
               />
             </td>
           </tr>
+          <button onClick={handleAddSynagoge}>send</button>
         </tbody>
         <br></br>
       </table>

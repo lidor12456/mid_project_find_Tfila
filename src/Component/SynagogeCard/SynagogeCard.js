@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Routes, Route, Link, useParams } from "react-router-dom";
+
 import style from "./SynagogeCard.css";
 
 function SynagogeCard(props) {
@@ -13,27 +15,13 @@ function SynagogeCard(props) {
       ) : (
         props.synagoeDetails.data && (
           <div>
-            {/* {(structureData = Object.entries(props.synagoeDetails.data[0]))}
-            {console.log(structureData)}
-            {structureData.map((item, i) => {
-              console.log(item);
-              if (i > 2) {
-                let objToString = JSON.stringify(item);
-                // console.log(objToString);
-                return (
-                  <div>
-                    <p>{objToString.replace(/[^a-zA-Z0-9]/g, " ")}</p>
-                  </div>
-                );
-              } else {
-                return <p>{item.join(" ")}</p>;
-              }
-            })} */}
             {props.synagoeDetails.data.map((item, i) => {
               return (
                 // <p>SHACHARIT : {item.SHACHARIT.Sunday.join(" ")}</p>
                 <div>
-                  <h2>{item.name}</h2>
+                  <Link to={`/${item.id}`}>
+                    <h2>{item.name}</h2>
+                  </Link>
                   <table className="tg">
                     <thead>
                       <tr>

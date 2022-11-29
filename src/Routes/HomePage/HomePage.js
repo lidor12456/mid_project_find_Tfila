@@ -71,25 +71,7 @@ function HomePage() {
   ];
   // console.log(obj);
 
-  let structureData = Object.entries(obj);
-  // console.log(structureData);
   return (
-    // <div>
-    //   <CitiesBar />
-    //   {structureData.map((item, i) => {
-    //     if (i > 2) {
-    //       let objToString = JSON.stringify(item);
-    //       return (
-    //         <div>
-    //           <p>{objToString.replace(/[^a-zA-Z0-9]/g, " ")}</p>
-    //           <br></br>
-    //         </div>
-    //       );
-    //     } else {
-    //       return <p>{item.join(" ")}</p>;
-    //     }
-    //   })}
-    // </div>
     <div>
       <CitiesBar />
     </div>
