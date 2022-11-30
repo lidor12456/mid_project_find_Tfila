@@ -8,12 +8,10 @@ function Nav() {
     <div>
       <div className="nav">
         <ul className="nav__ul">
+          {/* <li className="nav__li logo">FindTfila</li> */}
           <li className="nav__li">
-            <Link to="/">Home</Link>
+            <Link to="/">Search Page</Link>
           </li>
-          {/* <li className="nav__li">
-          <Link to="/store">Store</Link>
-        </li> */}
           <li className="nav__li">
             <Link to="/addsynagoge">Add Synagoge</Link>
           </li>

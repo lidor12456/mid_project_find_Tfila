@@ -56,47 +56,47 @@ function AddSynagoge() {
   };
 
   return (
-    <div>
-      <input
-        // value={inputValBrand}
-        placeholder="name"
-        onChange={({ target: { value } }) => {
-          setSynagogeObj((prev) => {
-            const updateState = { ...prev };
+    <div className="add-synagoge">
+      <h1>Add Synagoge</h1>
+      <div className="details-inputs">
+        <input
+          placeholder="Name"
+          onChange={({ target: { value } }) => {
+            setSynagogeObj((prev) => {
+              const updateState = { ...prev };
 
-            updateState.name = value;
-            return updateState;
-          });
-          console.log(synagoeObj);
-        }}
-      />
-      <input
-        // value={inputValBrand}
-        placeholder="city"
-        onChange={({ target: { value } }) => {
-          setSynagogeObj((prev) => {
-            const updateState = { ...prev };
+              updateState.name = value;
+              return updateState;
+            });
+            console.log(synagoeObj);
+          }}
+        />
+        <input
+          placeholder="City"
+          onChange={({ target: { value } }) => {
+            setSynagogeObj((prev) => {
+              const updateState = { ...prev };
 
-            updateState.city = value;
-            return updateState;
-          });
-          console.log(synagoeObj);
-        }}
-      />
-      <input
-        // value={inputValBrand}
-        placeholder="address"
-        onChange={({ target: { value } }) => {
-          setSynagogeObj((prev) => {
-            const updateState = { ...prev };
+              updateState.city = value;
+              return updateState;
+            });
+            console.log(synagoeObj);
+          }}
+        />
+        <input
+          placeholder="Address"
+          onChange={({ target: { value } }) => {
+            setSynagogeObj((prev) => {
+              const updateState = { ...prev };
 
-            updateState.adrees = value;
-            return updateState;
-          });
-          console.log(synagoeObj);
-        }}
-      />
-      <table className="tg">
+              updateState.adrees = value;
+              return updateState;
+            });
+            console.log(synagoeObj);
+          }}
+        />
+      </div>
+      <table className="tg schedule-inputs">
         <thead>
           <tr>
             <th className="tg-0lax"></th>
@@ -114,7 +114,6 @@ function AddSynagoge() {
             <td className="tg-0lax">Shacharit</td>
             <td className="tg-0lax">
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -130,7 +129,6 @@ function AddSynagoge() {
             <td className="tg-0lax">
               {" "}
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -146,7 +144,6 @@ function AddSynagoge() {
             <td className="tg-0lax">
               {" "}
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -162,7 +159,6 @@ function AddSynagoge() {
             <td className="tg-0lax">
               {" "}
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -178,7 +174,6 @@ function AddSynagoge() {
             <td className="tg-0lax">
               {" "}
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -194,7 +189,6 @@ function AddSynagoge() {
             <td className="tg-0lax">
               {" "}
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -210,7 +204,6 @@ function AddSynagoge() {
             <td className="tg-0lax">
               {" "}
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -228,7 +221,6 @@ function AddSynagoge() {
             <td className="tg-0lax">Minha</td>
             <td className="tg-0lax">
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -243,7 +235,6 @@ function AddSynagoge() {
             </td>
             <td className="tg-0lax">
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -258,7 +249,6 @@ function AddSynagoge() {
             </td>
             <td className="tg-0lax">
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -273,7 +263,6 @@ function AddSynagoge() {
             </td>
             <td className="tg-0lax">
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -288,7 +277,6 @@ function AddSynagoge() {
             </td>
             <td className="tg-0lax">
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -303,7 +291,6 @@ function AddSynagoge() {
             </td>
             <td className="tg-0lax">
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -318,7 +305,6 @@ function AddSynagoge() {
             </td>
             <td className="tg-0lax">
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -336,7 +322,6 @@ function AddSynagoge() {
             <td className="tg-0lax">Arvit</td>
             <td className="tg-0lax">
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -351,7 +336,6 @@ function AddSynagoge() {
             </td>
             <td className="tg-0lax">
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -366,7 +350,6 @@ function AddSynagoge() {
             </td>
             <td className="tg-0lax">
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -381,7 +364,6 @@ function AddSynagoge() {
             </td>
             <td className="tg-0lax">
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -396,7 +378,6 @@ function AddSynagoge() {
             </td>
             <td className="tg-0lax">
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -411,7 +392,6 @@ function AddSynagoge() {
             </td>
             <td className="tg-0lax">
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -426,7 +406,6 @@ function AddSynagoge() {
             </td>
             <td className="tg-0lax">
               <input
-                // value={inputValBrand}
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
@@ -444,6 +423,7 @@ function AddSynagoge() {
         <br></br>
       </table>
       <button
+        className="add-synagoge-btn"
         onClick={() => {
           handleAddSynagoge();
           navigate("/");

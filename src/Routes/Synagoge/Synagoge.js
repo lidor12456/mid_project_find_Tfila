@@ -2,6 +2,7 @@ import React, { useState, useEffect, useReducer } from "react";
 import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 import HomePage from "../HomePage/HomePage";
 import axios from "axios";
+import styles from "./Synagoge.css";
 
 function Synagoge() {
   const [synagogeObj, setSynagogeObj] = useState();
@@ -69,25 +70,25 @@ function Synagoge() {
 
       {isLoading && <h1 className="spinner">loading..</h1>}
       {synagogeObj && (
-        <div>
+        <div style={{ overflowX: "auto" }}>
           <h1>{synagogeObj.name}</h1>
           <h4>Address : {synagogeObj.adrees}</h4>
           <table className="tg">
             <thead>
               <tr>
                 <th className="tg-0lax"></th>
-                <th className="tg-0lax">sun</th>
-                <th className="tg-0lax">mon</th>
-                <th className="tg-0lax">thu</th>
-                <th className="tg-0lax">wed</th>
-                <th className="tg-0lax">thir</th>
-                <th className="tg-0lax">fri</th>
-                <th className="tg-0lax">sat</th>
+                <th className="tg-0lax">Sunday</th>
+                <th className="tg-0lax">Monday</th>
+                <th className="tg-0lax">Tuesday</th>
+                <th className="tg-0lax">Wednesday</th>
+                <th className="tg-0lax">Thursday</th>
+                <th className="tg-0lax">Friday</th>
+                <th className="tg-0lax">Saturday</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="tg-0lax">shachrit</td>
+                <td className="tg-0lax">Shacahrit</td>
                 <td className="tg-0lax">
                   <input
                     // value={inputValBrand}
@@ -189,7 +190,7 @@ function Synagoge() {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">minha</td>
+                <td className="tg-0lax">Minha</td>
                 <td className="tg-0lax">
                   <input
                     // value={inputValBrand}
@@ -290,7 +291,7 @@ function Synagoge() {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">arvit</td>
+                <td className="tg-0lax">Arvit</td>
                 <td className="tg-0lax">
                   <input
                     // value={inputValBrand}
@@ -394,6 +395,7 @@ function Synagoge() {
             <br></br>
           </table>
           <button
+            className="spec-btns"
             onClick={() => {
               handleDelete(synagogeObj.id);
               navigate("/");
@@ -402,6 +404,7 @@ function Synagoge() {
             Delete
           </button>
           <button
+            className="spec-btns"
             onClick={() => {
               handleUpdateSynagoge();
               navigate("/");

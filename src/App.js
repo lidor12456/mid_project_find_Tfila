@@ -10,6 +10,7 @@ import Nav from "./Component/Nav/Nav";
 import HomePage from "./Routes/HomePage/HomePage";
 import Synagoge from "./Routes/Synagoge/Synagoge";
 import AddSynagoge from "./Routes/AddSynagoge/AddSynagoge";
+// import Results from "./Component/Results/Results";
 import E404 from "./Routes/E404/E404";
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        {/* <Route path="/results" element={<Results />} /> */}
         <Route path="/:synagogeId" element={<Synagoge />} />
         <Route path="/addsynagoge" element={<AddSynagoge />} />
         <Route path="*" element={<E404 />} />

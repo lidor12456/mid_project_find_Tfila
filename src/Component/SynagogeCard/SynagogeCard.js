@@ -22,7 +22,7 @@ function SynagogeCard(props) {
               return (
                 // <p>SHACHARIT : {item.SHACHARIT.Sunday.join(" ")}</p>
 
-                <div>
+                <div className="table-container">
                   {item.city == props.cityToFetch && (
                     <div>
                       <Link to={`/${item.id}`}>
