@@ -3,12 +3,14 @@ import axios from "axios";
 import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 
 import styles from "./AddSynagoge.css";
+import Input from "./components/Input";
 
 function AddSynagoge() {
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);
   const [errorMes, setErrorMes] = useState(null);
+  const [toggle, setToggle] = useState(false);
   const [synagoeObj, setSynagogeObj] = useState({
     // id: new Date().getTime().toString(),
     name: "",
@@ -42,12 +44,25 @@ function AddSynagoge() {
       Saturday: [],
     },
   });
+  let count = 0;
+  const addAnotherInputHandler = () => {
+    if (count === 0) {
+      count++;
+      console.log("else");
+      return (
+        <div>
+          <Input />
+        </div>
+      );
+    }
+  };
 
   const handleAddSynagoge = async () => {
     try {
       setIsLoading(true);
       const { data } = await axios.post(
-        "https://63737d12348e9472990dd266.mockapi.io/synagoges",
+        "http://localhost:5000/api/addsynagogue",
+        // "https://63737d12348e9472990dd266.mockapi.io/synagoges",
         synagoeObj
       );
     } catch (e) {
@@ -114,17 +129,29 @@ function AddSynagoge() {
             <td className="tg-0lax">Shacharit</td>
             <td className="tg-0lax">
               <input
+                type="time"
                 placeholder=""
                 onChange={({ target: { value } }) => {
                   setSynagogeObj((prev) => {
                     const updateState = { ...prev };
 
-                    updateState.SHACHARIT.Sunday = [value];
+                    updateState.SHACHARIT.Sunday.push(value);
                     return updateState;
                   });
                   console.log(synagoeObj);
                 }}
               />
+              <button onClick={() => setToggle((prev) => !prev)}>
+                {!toggle ? "+" : "-"}
+              </button>
+              {toggle ? (
+                <Input
+                  pieceOfState={synagoeObj.SHACHARIT.Sunday}
+                  setSynagogeObj={setSynagogeObj}
+                />
+              ) : (
+                ""
+              )}
             </td>
             <td className="tg-0lax">
               {" "}
@@ -421,6 +448,7 @@ function AddSynagoge() {
           </tr>
         </tbody>
         <br></br>
+        <Input />
       </table>
       <button
         className="add-synagoge-btn"

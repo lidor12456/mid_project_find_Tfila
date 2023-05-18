@@ -6,7 +6,8 @@ function SynagogeList(props) {
   console.log(props);
 
   const { data, error, loading } = useFetch(
-    "https://63737d12348e9472990dd266.mockapi.io/synagoges"
+    "http://localhost:5000/api/allsynagogues"
+    // "https://63737d12348e9472990dd266.mockapi.io/synagoges"
   );
   console.log(data);
   if (error) {
