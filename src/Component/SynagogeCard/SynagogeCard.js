@@ -4,8 +4,6 @@ import { Routes, Route, Link, useParams } from "react-router-dom";
 import style from "./SynagogeCard.css";
 
 function SynagogeCard(props) {
-  let structureData;
-
   return (
     <div className="content">
       {/* {console.log(props.synagoeDetails.data)} */}

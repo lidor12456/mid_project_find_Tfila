@@ -1,12 +1,10 @@
 import React from "react";
 import axios from "axios";
-import { useEffect, useState, useRef, createContext } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 
 import SynagogeList from "../SynagogeList/SynagogeList";
 import styles from "./CitiesBar.css";
-
-export const myContext = createContext();
 
 function CitiesBar() {
   const userInput = useRef();
@@ -113,40 +111,38 @@ function CitiesBar() {
   }, []);
 
   return (
-    <myContext.Provider value={userChoice}>
-      <div className="main-form">
-        <form action="">
-          <p> Select City </p>
-          <div className="form-field" id="city-selection">
-            <input
-              list="cities-data"
-              id="city-choice"
-              name="city-choice"
-              ref={userInput}
-              // value={userChoice}
-            />
-            <br></br>
-            <button
-              className="btn-search"
-              onClick={(e) => {
-                e.preventDefault();
-                // userChoice = userInput.current.value;
-                setUserChoice(userInput.current.value);
-                console.log(userChoice);
-              }}
-            >
-              Search
-            </button>
-            <datalist id="cities-data">
-              <option value="">טוען רשימת ערים...</option>
-            </datalist>
-          </div>
+    <div className="main-form">
+      <form action="">
+        <p> Select City </p>
+        <div className="form-field" id="city-selection">
+          <input
+            list="cities-data"
+            id="city-choice"
+            name="city-choice"
+            ref={userInput}
+            // value={userChoice}
+          />
+          <br></br>
+          <button
+            className="btn-search"
+            onClick={(e) => {
+              e.preventDefault();
+              // userChoice = userInput.current.value;
+              setUserChoice(userInput.current.value);
+              console.log(userChoice);
+            }}
+          >
+            Search
+          </button>
+          <datalist id="cities-data">
+            <option value="">טוען רשימת ערים...</option>
+          </datalist>
+        </div>
 
-          {/* {userChoice && navigate("/result")} */}
-          {userChoice && <SynagogeList cityToFetch={userChoice} />}
-        </form>
-      </div>
-    </myContext.Provider>
+        {/* {userChoice && navigate("/result")} */}
+        {userChoice && <SynagogeList cityToFetch={userChoice} />}
+      </form>
+    </div>
   );
 }
 

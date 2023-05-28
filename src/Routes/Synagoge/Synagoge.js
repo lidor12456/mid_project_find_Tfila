@@ -3,6 +3,7 @@ import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 import HomePage from "../HomePage/HomePage";
 import axios from "axios";
 import styles from "./Synagoge.css";
+import Table from "../AddSynagoge/components/Table/Table";
 
 function Synagoge() {
   const [synagogeObj, setSynagogeObj] = useState();
@@ -10,22 +11,21 @@ function Synagoge() {
   const [errorMes, setErrorMes] = useState(null);
   const params = useParams();
   const navigate = useNavigate();
+  const URL = "http://localhost:5000/api";
+  // const URL = "https://63737d12348e9472990dd266.mockapi.io/synagoges";
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
         const { data } = await axios.get(
-          `https://63737d12348e9472990dd266.mockapi.io/synagoges/${params.synagogeId}`
+          `${URL}/synagogues/${params.synagogeId}`
         );
         console.log(data);
         setSynagogeObj(data);
         setIsLoading(false);
       } catch (e) {
         setErrorMes(e.message);
-        setTimeout(() => {
-          setErrorMes(null);
-        }, 1500);
       }
     };
     fetchData();
@@ -34,17 +34,12 @@ function Synagoge() {
   const handleDelete = async (id) => {
     try {
       setIsLoading(true);
-      const { data } = await axios.delete(
-        `https://63737d12348e9472990dd266.mockapi.io/synagoges/${params.synagogeId}`
-      );
+      const { data } = await axios.delete(`${URL}/${params.synagogeId}`);
       console.log(data);
 
       setIsLoading(true);
     } catch (e) {
       setErrorMes(e.message);
-      setTimeout(() => {
-        setErrorMes(null);
-      }, 1500);
     }
   };
 
@@ -52,7 +47,7 @@ function Synagoge() {
     try {
       setIsLoading(true);
       const { data } = await axios.put(
-        `https://63737d12348e9472990dd266.mockapi.io/synagoges/${params.synagogeId}`,
+        `${URL}/synagogues/${params.synagogeId}`,
         synagogeObj
       );
 
@@ -91,8 +86,8 @@ function Synagoge() {
                 <td className="tg-0lax">Shacahrit</td>
                 <td className="tg-0lax">
                   <input
-                    // value={inputValBrand}
-                    value={synagogeObj.SHACHARIT.Sunday}
+                    type="time"
+                    defaultValue={synagogeObj.SHACHARIT.Sunday}
                     onChange={({ target: { value } }) => {
                       setSynagogeObj((prev) => {
                         const updateState = { ...prev };
@@ -112,7 +107,7 @@ function Synagoge() {
                       setSynagogeObj((prev) => {
                         const updateState = { ...prev };
 
-                        updateState.SHACHARIT.Monday = [value];
+                        updateState.SHACHARIT.Monday = value;
                         return updateState;
                       });
                     }}
@@ -394,6 +389,7 @@ function Synagoge() {
             </tbody>
             <br></br>
           </table>
+          {/* <Table synagoeObj={synagogeObj} setSynagogeObj={setSynagogeObj} /> */}
           <button
             className="spec-btns"
             onClick={() => {

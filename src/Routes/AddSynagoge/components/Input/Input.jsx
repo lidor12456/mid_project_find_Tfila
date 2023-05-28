@@ -9,7 +9,7 @@ function Input({pieceOfState,setSynagogeObj}) {
   return (
     <>
     <input
-    
+    defaultValue={pieceOfState}
     type="time"
     ref={TimeInputRef}
     onChange={()=>{
