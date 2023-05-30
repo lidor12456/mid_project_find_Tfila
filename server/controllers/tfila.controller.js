@@ -40,6 +40,7 @@ const updateSynagogueById = async (req, res) => {
     const updatedSynagogue = await Synagogues.findByIdAndUpdate(id, req.body, {
       new: true,
     });
+    console.dir(req.body);
     res.status(201).send(updatedSynagogue);
   } catch (error) {
     res.status(404).send({ message: error.message });

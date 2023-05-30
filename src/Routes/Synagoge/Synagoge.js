@@ -46,10 +46,8 @@ function Synagoge() {
   const handleUpdateSynagoge = async () => {
     try {
       setIsLoading(true);
-      const { data } = await axios.put(
-        `${URL}/synagogues/${params.synagogeId}`,
-        synagogeObj
-      );
+      // const { data } =
+      await axios.put(`${URL}/synagogues/${params.synagogeId}`, synagogeObj);
 
       setIsLoading(false);
     } catch (e) {
@@ -67,8 +65,9 @@ function Synagoge() {
       {synagogeObj && (
         <div style={{ overflowX: "auto" }}>
           <h1>{synagogeObj.name}</h1>
-          <h4>Address : {synagogeObj.adrees}</h4>
-          <table className="tg">
+          <h4>City : {synagogeObj.city}</h4>
+          <h4>Address : {synagogeObj.address}</h4>
+          {/* <table className="tg">
             <thead>
               <tr>
                 <th className="tg-0lax"></th>
@@ -388,8 +387,8 @@ function Synagoge() {
               </tr>
             </tbody>
             <br></br>
-          </table>
-          {/* <Table synagoeObj={synagogeObj} setSynagogeObj={setSynagogeObj} /> */}
+          </table> */}
+          <Table synagoeObj={synagogeObj} setSynagogeObj={setSynagogeObj} />
           <button
             className="spec-btns"
             onClick={() => {

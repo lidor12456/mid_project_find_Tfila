@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState,useRef } from 'react'
 
-function Input({pieceOfState,setSynagogeObj}) {
+function Input({pieceOfState,setSynagogeObj,isFirstPosition}) {
     const [tfilaTimes,setTfilaTimes] = useState([]);
     const TimeInputRef = useRef()
 
@@ -9,12 +9,12 @@ function Input({pieceOfState,setSynagogeObj}) {
   return (
     <>
     <input
-    defaultValue={pieceOfState}
+    defaultValue={isFirstPosition? pieceOfState[0] :pieceOfState[1] }
     type="time"
     ref={TimeInputRef}
     onChange={()=>{
         setSynagogeObj((prev)=>{
-             pieceOfState.push(TimeInputRef.current?.value);
+            isFirstPosition? pieceOfState[0]=TimeInputRef.current?.value : pieceOfState[1]=TimeInputRef.current?.value; 
             return prev;
         })
 

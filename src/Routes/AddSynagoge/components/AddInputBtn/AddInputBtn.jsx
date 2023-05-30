@@ -11,6 +11,8 @@ function AddInputBtn(props) {
     {!toggle ? "+" : "-"}
   </button>
   <br></br>
+  
+  {console.log(props.pieceOfState)}
   {toggle ? <Input pieceOfState={props.pieceOfState} setSynagogeObj={props.setSynagogeObj}/>:  ""}
   </>
   )
